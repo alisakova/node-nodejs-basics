@@ -1,6 +1,6 @@
 import { readFile } from "fs/promises";
 import { join } from "path";
-import url from 'url';
+import url from "url";
 import { isExist } from "./isExist.js";
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
