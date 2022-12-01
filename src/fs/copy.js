@@ -5,14 +5,14 @@ import { FILE_DIRECTORY, ERROR_MESSAGE, __dirname } from "./const.js";
 
 const NEW_FILE_DIRECTORY = "files_copy";
 const DIRECTORY_PATH = join(__dirname, FILE_DIRECTORY);
-const NEW_DIRECTORY_PATH = join(__dirname, NEW_FILE_DIRECTORY)
+const NEW_DIRECTORY_PATH = join(__dirname, NEW_FILE_DIRECTORY);
 
 const copy = async () => {
     try {
         const isOldDirectoryExist = await isExist(DIRECTORY_PATH);
         const isNewDirectoryExist = await isExist(NEW_DIRECTORY_PATH);
 
-        if (!isNewDirectoryExist || !isOldDirectoryExist) {
+        if (isNewDirectoryExist || !isOldDirectoryExist) {
             throw new Error(ERROR_MESSAGE);
         }
 
