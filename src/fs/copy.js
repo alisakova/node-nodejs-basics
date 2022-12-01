@@ -1,6 +1,7 @@
 import { readdir, mkdir, copyFile } from "fs/promises";
 import { join } from "path";
 import url from "url";
+import { isExist } from "./isExist.js";
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
@@ -12,6 +13,13 @@ const NEW_DIRECTORY_PATH = join(__dirname, NEW_FILE_DIRECTORY)
 
 const copy = async () => {
     try {
+        const isOldDirectoryExist = await isExist(DIRECTORY_PATH);
+        const isNewDirectoryExist = await isExist(NEW_DIRECTORY_PATH);
+
+        if (!isNewDirectoryExist || !isOldDirectoryExist) {
+            throw new Error(ERROR_MESSAGE);
+        }
+
         const files = await readdir(DIRECTORY_PATH);
         await mkdir(NEW_DIRECTORY_PATH);
 
@@ -19,7 +27,7 @@ const copy = async () => {
             await copyFile(join(DIRECTORY_PATH, file), join(NEW_DIRECTORY_PATH, file));
         }
     } catch (error) {
-        console.error(ERROR_MESSAGE);
+        console.error(error.message);
     }
 };
 
