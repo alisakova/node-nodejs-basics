@@ -1,5 +1,3 @@
-import { argv } from "node:process";
-
 const ENV_PREFIX = "RSS_";
 
 const parseEnv = () => {
