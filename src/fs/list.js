@@ -7,7 +7,7 @@ const DIRECTORY_PATH = join(__dirname, FILE_DIRECTORY);
 
 const list = async () => {
     try {
-        const isDirectoryExist = isExist(DIRECTORY_PATH);
+        const isDirectoryExist = await isExist(DIRECTORY_PATH);
 
         if (!isDirectoryExist) {
             throw new Error(ERROR_MESSAGE);
