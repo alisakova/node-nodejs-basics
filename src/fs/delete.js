@@ -1,6 +1,7 @@
-import { rm, access } from "fs/promises";
+import { rm } from "fs/promises";
 import path from "path";
 import url from "url";
+import { isExist } from "./isExist.js";
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
@@ -8,16 +9,6 @@ const FILE_TO_DELETE = "fileToRemove.txt";
 const ERROR_MESSAGE = "FS operation failed";
 const FILE_DIRECTORY = "files";
 const FILE_PATH = path.join(__dirname, FILE_DIRECTORY, FILE_TO_DELETE);
-
-const isExist = async (filePath) => {
-    try {
-        await access(filePath);
-
-        return true;
-    } catch (error) {
-        return false;
-    }
-}
 
 const remove = async () => {
     try {

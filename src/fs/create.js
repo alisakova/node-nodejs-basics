@@ -1,6 +1,7 @@
-import { access, writeFile } from "fs/promises";
+import { writeFile } from "fs/promises";
 import { join } from "path";
 import url from "url";
+import { isExist } from "./isExist.js";
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
@@ -9,16 +10,6 @@ const CONTENT = "I am fresh and young";
 const ERROR_MESSAGE = "FS operation failed";
 const FILE_DIRECTORY = "files";
 const FILE_PATH = join(__dirname, FILE_DIRECTORY, FILE_NAME);
-
-const isExist = async (filePath) => {
-    try {
-        await access(filePath);
-
-        return true;
-    } catch (error) {
-        return false;
-    }
-}
 
 const create = async () => {
     try {

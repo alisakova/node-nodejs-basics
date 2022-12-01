@@ -1,6 +1,7 @@
 import { rename as fsRename, access } from "fs/promises";
 import path from "path";
 import url from "url";
+import { isExist } from "./isExist.js";
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
@@ -9,17 +10,7 @@ const NEW_FILE_NAME = "properFilename.md";
 const ERROR_MESSAGE = "FS operation failed";
 const FILE_DIRECTORY = "files";
 const OLD_FILE_PATH = path.join(__dirname, FILE_DIRECTORY, OLD_FILE_NAME);
-const NEW_FILE_PATH = path.join(__dirname, FILE_DIRECTORY, NEW_FILE_NAME);
-
-const isExist = async (filePath) => {
-    try {
-        await access(filePath);
-
-        return true;
-    } catch (error) {
-        return false;
-    }
-}
+const NEW_FILE_PATH = path.join(__dirname, FILE_DIRECTORY, NEW_FILE_NAME)
 
 const rename = async () => {
     try {
