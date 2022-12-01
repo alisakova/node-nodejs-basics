@@ -1,13 +1,9 @@
 import { readdir, mkdir, copyFile } from "fs/promises";
 import { join } from "path";
-import url from "url";
 import { isExist } from "./isExist.js";
-
-const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+import { FILE_DIRECTORY, ERROR_MESSAGE, __dirname } from "./const.js";
 
 const NEW_FILE_DIRECTORY = "files_copy";
-const ERROR_MESSAGE = "FS operation failed";
-const FILE_DIRECTORY = "files";
 const DIRECTORY_PATH = join(__dirname, FILE_DIRECTORY);
 const NEW_DIRECTORY_PATH = join(__dirname, NEW_FILE_DIRECTORY)
 

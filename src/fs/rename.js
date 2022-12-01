@@ -1,14 +1,10 @@
-import { rename as fsRename, access } from "fs/promises";
+import { rename as fsRename } from "fs/promises";
 import path from "path";
-import url from "url";
 import { isExist } from "./isExist.js";
-
-const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+import { FILE_DIRECTORY, ERROR_MESSAGE, __dirname } from "./const.js";
 
 const OLD_FILE_NAME = "wrongFilename.txt";
 const NEW_FILE_NAME = "properFilename.md";
-const ERROR_MESSAGE = "FS operation failed";
-const FILE_DIRECTORY = "files";
 const OLD_FILE_PATH = path.join(__dirname, FILE_DIRECTORY, OLD_FILE_NAME);
 const NEW_FILE_PATH = path.join(__dirname, FILE_DIRECTORY, NEW_FILE_NAME)
 

@@ -1,12 +1,8 @@
 import { readdir } from "fs/promises";
 import { join } from "path";
-import url from "url";
 import { isExist } from "./isExist.js";
+import { FILE_DIRECTORY, ERROR_MESSAGE, __dirname } from "./const.js";
 
-const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
-
-const ERROR_MESSAGE = "FS operation failed";
-const FILE_DIRECTORY = "files";
 const DIRECTORY_PATH = join(__dirname, FILE_DIRECTORY);
 
 const list = async () => {
